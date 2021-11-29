@@ -1,20 +1,11 @@
 <template>
   <div>
-    <swiper class="home-swiper" ref="mySwiper" :options="swiperOptions">
-      <swiper-slide v-for="banner in banners" :key="banner.acm">
-        <a :href="banner.link"
-          ><img :src="banner.image" alt="图片加载失败"
-        /></a>
-      </swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
+    <my-swiper :swiperOptions="swiperOptions" :banners="banners"></my-swiper>
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
-import "swiper/css/swiper.css";
-
+import MySwiper from "components/content/myswiper/MySwiper";
 export default {
   name: "HomeSwiper",
   data() {
@@ -27,9 +18,11 @@ export default {
         autoplay: {
           delay: 4000,
         },
-        // Some Swiper option/callback...
       },
     };
+  },
+  components: {
+    MySwiper,
   },
   props: {
     banners: {
@@ -39,28 +32,8 @@ export default {
       },
     },
   },
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-
-  directives: {
-    swiper: directive,
-  },
-
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper;
-    },
-  },
+  methods: {},
 };
 </script>
 
-<style scoped>
-.home-swiper {
-  height: 200px;
-}
-.home-swiper img {
-  height: 200px;
-}
-</style>
+<style scoped></style>

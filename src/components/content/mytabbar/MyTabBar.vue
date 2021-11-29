@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <tab-bar>
       <tab-bar-item path="/home" textColor="#ff5777">
         <template v-slot:tab-item-icon>
@@ -58,4 +60,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
